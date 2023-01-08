@@ -22,12 +22,10 @@ title: To-blog
 author: Toshiki003
 copyright: "Copyright © 2023 To-blog"
 description: >- # this means to ignore newlines until "baseurl:"
-  プログラミング学習とWeb系エンジニア転職の記録です。
+  プログラミング学習とWeb系エンジニア転職の記録です。RUNTEQ36期生。育児しながら頑張ります。
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://Toshiki003.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 domain: Toshiki003.github.io
-
-#profileはABOUTの方にした方がいい。
 #twitter_username: jekyllrb
 #github_username:  jekyll
 
