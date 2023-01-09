@@ -11,3 +11,12 @@ categories: アルゴリズム
 
 
 プログラミング
+
+~~~ruby
+
+def create
+  @posts = Post.new
+end
+~~~
+
+a
