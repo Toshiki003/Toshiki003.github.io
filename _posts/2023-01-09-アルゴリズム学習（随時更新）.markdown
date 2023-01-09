@@ -10,13 +10,22 @@ categories: アルゴリズム
 そこで使ったRubyのメソッドや考え方を、メモしていきます。
 
 
-プログラミング
+アルゴ式　https://algo-method.com/tasks
+
+標準出力
+
+問題文
+***
+N 個の正の整数が与えられます。
+N 個の正整数の最小値を求め出力してください。
+***
 
 ~~~ruby
 
-def create
-  @posts = Post.new
-end
+N = gets.to_i
+array = gets.split.map(&:to_i)
+
+p array.sort.shift
 ~~~
 
-a
+sortメソッドで順番に並べて、shiftで配列の最初の要素を除いてそれを戻り値とした。
