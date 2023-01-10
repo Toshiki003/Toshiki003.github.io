@@ -7,13 +7,14 @@ categories: アルゴリズム
 
 **「どの段階であっても、カリキュラムと並行してアルゴリズムの学習をすることを強くお勧めします」**とアドバイスをいただいた。  
 できれば毎日、アルゴ式を解いていく。<br>
-そこで使ったRubyのメソッドや考え方を、メモしていきます。
+そこで使ったRubyのメソッドや考え方を、メモしていきます。その第一弾。
 
 
-アルゴ式　https://algo-method.com/tasks
+アルゴ式　(https://algo-method.com/tasks)
 
 標準出力
 
+## 1
 問題文
 ***
 N 個の正の整数が与えられます。
@@ -29,3 +30,90 @@ p array.sort.shift
 ~~~
 
 sortメソッドで順番に並べて、shiftで配列の最初の要素を除いてそれを戻り値とした。
+
+sortメソッドはsort_byもあってそちらの方が処理速度が安定しているらしい。ブロックを渡して処理というのがまだ苦手なので、リファレンスが読めるようにしたいな。  
+
+## 2
+問題文
+***
+*N* 個の文字列はすべて `left` または `right` のどちらかです。
+
+*N* 個の文字列のうち、
+
+- `left` の個数が多い場合は `left` を、
+- `right` の個数が多い場合は `right` を、
+- `left` と `right` の個数が等しい場合は `same` を出力してください。
+***
+
+自分の解答
+~~~ruby
+N = gets.to_i
+
+i = 0
+left_array = []
+right_array = []
+
+while i < N
+  str = gets.chomp.to_s
+  case str
+    when "left"
+        left_array << str
+    when "right"
+        right_array << str
+  end
+  i += 1
+end
+
+if left_array.size == right_array.size
+  puts "same"
+elsif left_array.size > right_array.size
+  puts "left"
+elsif left_array.size < right_array.size
+  puts "right"
+end
+~~~
+left, rightの文字列を配列にそれぞれ格納して、そのsizeを比較してputs.
+
+かなり長くなってしまった。よくなさそう。  
+アルゴ式のいいところは、他の人の解答を見ることができるところ。見比べて、使ったことのないメソッドがあったらこまめにメモ。  
+これいいなと思ったのが、２つ。
+~~~ruby
+n = gets.chomp.to_i
+left = 0
+right = 0
+
+(1..n).each do
+
+    if gets.chomp.to_s == "left"
+        left += 1
+    else
+        right += 1
+    end
+
+end
+
+if left == right
+    puts "same"
+elsif left > right
+    puts "left"
+else
+    puts "right"
+end
+~~~
+こちらの方は、文字列left, rightの数を変数left, rightにカウントしていって、その数を比較して出している。文字列のまま配列に入れ込むよりも、こちらの方がシンプルだなー。なるほど勉強になる。  
+続いて、コード量が少ないものでみると…
+~~~ruby
+arr = readlines.map(&:chomp)
+if arr.grep('left').size > arr.grep('right').size
+    puts 'left'
+elsif arr.grep('right').size > arr.grep('left').size
+    puts 'right'
+else
+    puts 'same'
+end
+~~~
+grepメソッドを使って、完全一致する文字の数を直接if文の中で比較している。なるほどー！一番スマートではある。  
+grepはLinuxでたまーに使う程度だったけれど、なんだ、Rubyにもメソッドとして用意されているんだと知ることができて面白かった。  
+ということは、他の言語にもあるのかな。その辺、Rubyの学習を深めた後で違う言語にも行ってみたい。  
+そのためにアルゴリズム。  
+いまはレベルとしては低いかもしれないけれど、一歩ずつ理解して、自分にできる範囲を増やしていく。  
