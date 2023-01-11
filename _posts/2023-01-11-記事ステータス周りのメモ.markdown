@@ -9,8 +9,50 @@ categories: 学習ログ
 
 ## rakeタスク
 
-**Rake**とは、Rubyで書かれたコードをタスクとして作成しておき必要に応じて呼び出し実行することができる機能。
+Rakeとは、Rubyで書かれたコードをタスクとして作成しておき必要に応じて呼び出し実行することができる機能。
 
+このRakeが実行する処理内容をRakeタスクと呼び、定義する場所をRakefileと呼ぶ。
+
+- 利用場面
+
+何かしらのデータの連携、DBバックアップ、定期的にデータを更新・削除するなどの**定型処理**
+
+- Rakeタスクの作り方
+
+```ruby
+$ rails g task greet（ファイル名）
+		create  lib/tasks/greet.rake
+```
+
+```ruby
+lib/tasks/greet.rake内
+namespace :greet do
+end
+↓  # 以下のように変更
+namespace :greet do
+  desc "Helloを表示するタスク"
+  task say_hello: :environment do    # say_helloは自由に名称をつけることができる
+    puts "Hello"
+  end
+end
+```
+
+descはタスク一覧を表示した時の説明文。`rake -T`
+
+taskの後がタスクの名称と、ブロック内に実行する内容を書く。
+
+- rakeタスクの実行
+
+```ruby
+$ rake greet:say_hello
+		Hello
+```
+
+参考：
+
+書籍「パーフェクトRuby on Rails」p21
+
+[【Rails 】Rakeタスクとは]([https://qiita.com/mmaumtjgj/items/8384b6a26c97965bf047](https://qiita.com/mmaumtjgj/items/8384b6a26c97965bf047))
 ## cron, whenever
 
 ## find_each

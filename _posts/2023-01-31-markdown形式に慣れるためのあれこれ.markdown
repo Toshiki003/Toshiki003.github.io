@@ -1,0 +1,22 @@
+
+
+## **随時更新**
+
+
+* VScode上でプレビューが見たい場合
+  * (MacOS) Command + K + V　でサイドバイサイドにプレビューを表示
+
+  参考：[VS CodeでMarkdownをプレビューするには？](https://atmarkit.itmedia.co.jp/ait/articles/1804/20/news030.html)
+
+* 
+
+
+* 
+
+
+* 
+
+
+* 
+
+
