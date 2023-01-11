@@ -6,3 +6,13 @@ categories: 学習ログ
 ---
 
 準備中。技術調査メモをここに残します。
+
+## rakeタスク
+
+Rakeとは、Rubyで書かれたコードをタスクとして作成しておき必要に応じて呼び出し実行することができる機能。
+
+## cron, whenever
+
+## find_each
+
+## FatControllerの解消
