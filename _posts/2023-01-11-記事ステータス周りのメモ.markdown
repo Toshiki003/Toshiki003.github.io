@@ -5,7 +5,7 @@ date:   2023-01-11 06:05:13 +0900
 categories: 学習ログ
 ---
 
-準備中。技術調査メモをここに残します。
+技術調査メモをここに残します。
 
 ## rakeタスク
 
@@ -54,7 +54,55 @@ $ rake greet:say_hello
 
 [【Rails 】Rakeタスクとは]([https://qiita.com/mmaumtjgj/items/8384b6a26c97965bf047](https://qiita.com/mmaumtjgj/items/8384b6a26c97965bf047))
 ## cron, whenever
+cron→クロン、またはクーロン。〜時になったら〇〇のコマンドを実行といった定期処理を実行するために、メモリ上で常に命令を待機しているプロセスのこと。UNIX系OS(MacOS含む)で標準的に利用される常駐プログラム＝デーモンの一種。
+
+cronに対して命令を行うには、crontabに記述をする。ちなみにcrontabは”cron table”の略。
+
+whenever→cronの設定をRuby言語で書けるようにしたライブラリのこと。gem wheneverを使ってcronの設定を行うようだ。
+
+### wheneverでcronを編集する
+
+- Gemfileに記述しbundle install
+
+```ruby
+gem 'whenever', require: false #解説
+```
+
+- Gemfileにrequire: falseをつける意味
+
+今までスルーしていたけど、メモしておく。
+
+解説：`require: false`を指定すると、自動読み込みしないようにする。
+
+Rubocopだったり今回のwhenever は通常コマンドで使用するもので、Railsアプリの中からメソッドを呼び出すことはない。ということは自動読み込みさせる必要がないので、`require: false`にすればよいということ。
+
+[Gemfile に書く require: false とは何か - No Solution for Life](https://masuyama13.hatenablog.com/entry/2021/01/10/225038)
+
+この後の具体的なコマンドや流れは、参考にしたQiita記事を読んで進めていく。
+
+### job_typeとは
+
+### crontabの実行
+
 
 ## find_each
+分割してレコードを取得して1件ずつ処理する。デフォルトでは1000件ずつ(!)処理し、大きなデータを持つモデルなどを処理する時に使う。(Railsドキュメント）
 
+使用例
+
+```ruby
+User.find_each do |user|
+  p user.id 
+end
+```
+
+1万人のユーザー情報があったとき、1000件ずつレコードを取得することでメモリへの負担を減らす。
+
+whereメソッドと併せて使うと、取得するレコードの条件を指定した後にfind_eachメソッドを使うことができる。また、オプションとして:batch_size, :start, :finishなどが用意されている。
+
+詳しくは、[【Rails】 find_eachメソッドでメモリを節約して大量データを扱う方法]([https://pikawaka.com/rails/find_each#whereメソッドと使う](https://pikawaka.com/rails/find_each#where%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%A8%E4%BD%BF%E3%81%86))を参照。
 ## FatControllerの解消
+
+→処理の流れが追いにくい状態。基本的にはモデルにロジックを寄せていく。ここでデザインパターンなる考え方が登場。
+
+現状がFatな状態であるかどうか、コードを読んで確認する。
