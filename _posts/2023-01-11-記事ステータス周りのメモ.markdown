@@ -108,3 +108,32 @@ whereメソッドと併せて使うと、取得するレコードの条件を指
 現状がFatな状態であるかどうか、コードを読んで確認する。
 
 また、ログを確認し、SQLが頻繁に発行されていないかを調べていく。
+
+# STI
+
+**[Rails ActiveRecordのSTI(Single Table Inheritance)の使い方](https://easyramble.com/rails-activerecord-single-table-inheritance.html)**
+
+****[【Rails】単一テーブル継承(STI)について(Qiita)](https://qiita.com/niwa1903/items/218713c076fb0075712f)****
+
+
+
+要はクラスの継承のDB版。テーブルを少なくできるよ！同じような設計のテーブルは一つにまとめてDRYしようぜ、って話。ログで出されるSQLが大事っぽいから読み慣れしたいね。今のところ理解度で言うと20%ぐらい。
+
+
+
+# ActiveStrage
+
+Amazon S3などクラウドストレージサービスへのアップロードなどできる。また、アプリにアップした画像の変形、画像以外の動画から画像を生成したり、メタデータ抽出？にも利用できる。とRailsガイドより。要は結構便利ですよってこと。
+
+ただ、Rails以外のサードパーティソフトウェアに依存しているから、別途インストールが必要。また、gem ‘image_processing’も必要。
+
+- [ファイルをレコードに添付する](https://railsguides.jp/active_storage_overview.html#has-one-attached)　has_one_attached レコード1件ごとに1個のファイルを添付
+
+カリキュラムのschemaを見ると、active_storage_blobsとactive_storage_attachmentsはテーブルがあるけれど、`active_storage_variant_records`は存在しなかった。あれ？Railsガイドと違うぞ？と思ったけれど、Railsガイド7系を読んでいた。実際に今使用しているのはRails5.2.3。バージョンが違うからActiveStrageで必要なテーブル数も違うというのが結論。
+
+**Railsガイドを読むときは、バージョンをしっかり確認すること。**
+<br>
+<br>
+<br>
+<br>
+articleモデルで言語化できないところを調べるうちに、STIやActiveStrageについてもざっくり理解できました。課題の記事ステータスの変更には関係ないかもしれないけれど、こうやって初めて触れるコードや概念を一つずつ理解していきます。
