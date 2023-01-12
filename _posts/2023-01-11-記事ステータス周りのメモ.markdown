@@ -8,13 +8,16 @@ categories: 学習ログ
 技術調査メモをここに残します。
 
 * [rakeタスク](#sec1)
-* [第２章](#sec2)
-* [第３章](#sec3)
+* [cron, whenever](#sec2)
+* [find_each](#sec3)
+* [FatControllerの解消](#sec4)
+* [STI](#sec5)
+* [ActiveStrage](#sec6)
 
 
 
-<a id="sec1"></a>
-<h1>rakeタスク</h1>
+<a id="sec"></a>
+# rakeタスク
 
 Rakeとは、Rubyで書かれたコードをタスクとして作成しておき必要に応じて呼び出し実行することができる機能。
 
@@ -60,6 +63,8 @@ $ rake greet:say_hello
 書籍「パーフェクトRuby on Rails」p21
 
 [【Rails 】Rakeタスクとは]([https://qiita.com/mmaumtjgj/items/8384b6a26c97965bf047](https://qiita.com/mmaumtjgj/items/8384b6a26c97965bf047))
+
+<a id="sec2"></a>
 ## cron, whenever
 cron→クロン、またはクーロン。〜時になったら〇〇のコマンドを実行といった定期処理を実行するために、メモリ上で常に命令を待機しているプロセスのこと。UNIX系OS(MacOS含む)で標準的に利用される常駐プログラム＝デーモンの一種。
 
@@ -91,7 +96,7 @@ Rubocopだったり今回のwhenever は通常コマンドで使用するもの�
 
 ### crontabの実行
 
-
+<a id="sec3"></a>
 ## find_each
 分割してレコードを取得して1件ずつ処理する。デフォルトでは1000件ずつ(!)処理し、大きなデータを持つモデルなどを処理する時に使う。(Railsドキュメント）
 
@@ -108,6 +113,9 @@ end
 whereメソッドと併せて使うと、取得するレコードの条件を指定した後にfind_eachメソッドを使うことができる。また、オプションとして:batch_size, :start, :finishなどが用意されている。
 
 詳しくは、[【Rails】 find_eachメソッドでメモリを節約して大量データを扱う方法]([https://pikawaka.com/rails/find_each#whereメソッドと使う](https://pikawaka.com/rails/find_each#where%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%A8%E4%BD%BF%E3%81%86))を参照。
+
+
+<a id="sec4"></a>
 ## FatControllerの解消
 
 →処理の流れが追いにくい状態。基本的にはモデルにロジックを寄せていく。ここでデザインパターンなる考え方が登場。
@@ -116,6 +124,8 @@ whereメソッドと併せて使うと、取得するレコードの条件を指
 
 また、ログを確認し、SQLが頻繁に発行されていないかを調べていく。
 
+
+<a id="sec5"></a>
 # STI
 
 **[Rails ActiveRecordのSTI(Single Table Inheritance)の使い方](https://easyramble.com/rails-activerecord-single-table-inheritance.html)**
@@ -127,7 +137,7 @@ whereメソッドと併せて使うと、取得するレコードの条件を指
 要はクラスの継承のDB版。テーブルを少なくできるよ！同じような設計のテーブルは一つにまとめてDRYしようぜ、って話。ログで出されるSQLが大事っぽいから読み慣れしたいね。今のところ理解度で言うと20%ぐらい。
 
 
-
+<a id="sec6"></a>
 # ActiveStrage
 
 Amazon S3などクラウドストレージサービスへのアップロードなどできる。また、アプリにアップした画像の変形、画像以外の動画から画像を生成したり、メタデータ抽出？にも利用できる。とRailsガイドより。要は結構便利ですよってこと。
