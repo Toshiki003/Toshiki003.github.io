@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "記事ステータス周りのメモ"
-date:   2023-01-11 06:05:13 +0900
+date:   2023-01-12 06:05:13 +0900
 categories: 学習ログ
 ---
 
@@ -130,7 +130,7 @@ whereメソッドと併せて使うと、取得するレコードの条件を指
 
 **[Rails ActiveRecordのSTI(Single Table Inheritance)の使い方](https://easyramble.com/rails-activerecord-single-table-inheritance.html)**
 
-****[【Rails】単一テーブル継承(STI)について(Qiita)](https://qiita.com/niwa1903/items/218713c076fb0075712f)****
+**[【Rails】単一テーブル継承(STI)について(Qiita)](https://qiita.com/niwa1903/items/218713c076fb0075712f)**
 
 
 
